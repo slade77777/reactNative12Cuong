@@ -16,6 +16,8 @@ import {
   Text,
   useColorScheme,
   View,
+  Dimensions,
+  Image,
 } from 'react-native';
 
 import {
@@ -34,37 +36,100 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
+    <SafeAreaView
+      style={{
+        backgroundColor: '#F8F8F8',
+        flex: 1,
+        justifyContent: 'center',
+      }}>
+      <View style={{backgroundColor: 'white'}}>
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            padding: 10,
           }}>
-          <Section1 title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section1>
-          <Section1 title="See Your Changes">
-            <ReloadInstructions />
-          </Section1>
-          <Section1 title="Debug">
-            <DebugInstructions />
-          </Section1>
-          <Section1 title="Learn More">
-            Read the docs to discover what to do next:
-          </Section1>
-          <LearnMoreLinks />
+          <Text style={{fontSize: 20, color: 'orange', fontWeight: 'bold'}}>
+            Tìm kiếm phổ biến
+          </Text>
+          <Text style={{color: 'orange'}}>Xem thêm</Text>
         </View>
-      </ScrollView>
+        <View>
+          <View style={styles.displayInline}>
+            <View style={styles.product}>
+              <View>
+                <Text>Tai-nghe</Text>
+                <Text>172K sản phẩm</Text>
+              </View>
+              <Image
+                source={{
+                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+                }}
+                style={{width: 50, height: 50}}
+              />
+            </View>
+            <View style={styles.product}>
+              <View>
+                <Text>Sandal nữ</Text>
+                <Text>402k sản phẩm</Text>
+              </View>
+              <Image
+                source={{
+                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+                }}
+                style={{width: 50, height: 50}}
+              />
+            </View>
+          </View>
+          <View style={styles.displayInline}>
+            <View style={styles.product}>
+              <View>
+                <Text>Tai-nghe</Text>
+                <Text>172K sản phẩm</Text>
+              </View>
+              <Image
+                source={{
+                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+                }}
+                style={{width: 50, height: 50}}
+              />
+            </View>
+            <View style={styles.product}>
+              <View>
+                <Text>Sandal nữ</Text>
+                <Text>402k sản phẩm</Text>
+              </View>
+              <Image
+                source={{
+                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+                }}
+                style={{width: 50, height: 50}}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  small: {
+    flex: 1,
+  },
+  displayInline: {
+    flexDirection: 'row',
+    display: 'flex',
+    height: 100,
+  },
+  product: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: 'grey',
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

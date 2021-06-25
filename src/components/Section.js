@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   sectionDescription: {
     marginTop: 8,
-    fontSize: 18,
+    fontSize: 28,
     fontWeight: '400',
   },
   highlight: {
