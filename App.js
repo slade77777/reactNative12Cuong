@@ -6,146 +6,139 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
+import React from 'react'
 import {
-  SafeAreaView,
   ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Dimensions,
-  Image,
-} from 'react-native';
+  SectionList
+} from 'react-native'
+import Content from './src/components/Content'
+import Title from './src/components/Title'
+import Header from './src/components/Header'
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Section1 from './src/components/Section';
+const App = () => {
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const Contacts = [
+    {
+      title:'A',
+      data:[{name:'Anna Haro',numberPhone:'(555) 555-555'}]
+    },
+    {
+      title:'D',
+      data:[{name:'Daniel',numberPhone:'(555) 444-4444',device:'home'},
+            {name:'Daniel',numberPhone:'(408) 222-2222',device:'mobile'},
+            {name:'David Taylor',numberPhone:'(555) 677-7777',device:''}
+      ]
+    },
+    {
+      title:'H',
+      data:[{name:'Hank Zakroff',numberPhone:'(555) 761-1111',device:'work'},
+            {name:'Hank Zakroff',numberPhone:'(707) 544-4444',device:'other'}
+      ]
+    },
+    {
+      title:'J',
+      data:[{name:'John Appleseed',numberPhone:'1 (234) 567-889',device:'Mobile'},
+            {name:'John Appleseed',numberPhone:'(987) 654-3210',device:'home'}
+      ]
+    },
+    {
+      title:'K',
+      data:[{name:'Kate Bell',numberPhone:'1 (234) 567-889',device:'mobile'}]
+    },
+    {
+      title:'A',
+      data:[{name:'Anna Haro',numberPhone:'(555) 555-555'}]
+    },
+    {
+      title:'D',
+      data:[{name:'Daniel',numberPhone:'(555) 444-4444',device:'home'},
+            {name:'Daniel',numberPhone:'(408) 222-2222',device:'mobile'},
+            {name:'David Taylor',numberPhone:'(555) 677-7777',device:''}
+      ]
+    },
+    {
+      title:'H',
+      data:[{name:'Hank Zakroff',numberPhone:'(555) 761-1111',device:'work'},
+            {name:'Hank Zakroff',numberPhone:'(707) 544-4444',device:'other'}
+      ]
+    },
+    {
+      title:'J',
+      data:[{name:'John Appleseed',numberPhone:'1 (234) 567-889',device:'Mobile'},
+            {name:'John Appleseed',numberPhone:'(987) 654-3210',device:'home'}
+      ]
+    },
+    {
+      title:'K',
+      data:[{name:'Kate Bell',numberPhone:'1 (234) 567-889',device:'mobile'}]
+    },
+    {
+      title:'A',
+      data:[{name:'Anna Haro',numberPhone:'(555) 555-555'}]
+    },
+    {
+      title:'D',
+      data:[{name:'Daniel',numberPhone:'(555) 444-4444',device:'home'},
+            {name:'Daniel',numberPhone:'(408) 222-2222',device:'mobile'},
+            {name:'David Taylor',numberPhone:'(555) 677-7777',device:''}
+      ]
+    },
+    {
+      title:'H',
+      data:[{name:'Hank Zakroff',numberPhone:'(555) 761-1111',device:'work'},
+            {name:'Hank Zakroff',numberPhone:'(707) 544-4444',device:'other'}
+      ]
+    },
+    {
+      title:'J',
+      data:[{name:'John Appleseed',numberPhone:'1 (234) 567-889',device:'Mobile'},
+            {name:'John Appleseed',numberPhone:'(987) 654-3210',device:'home'}
+      ]
+    },
+    {
+      title:'K',
+      data:[{name:'Kate Bell',numberPhone:'1 (234) 567-889',device:'mobile'}]
+    },
+    {
+      title:'A',
+      data:[{name:'Anna Haro',numberPhone:'(555) 555-555'}]
+    },
+    {
+      title:'D',
+      data:[{name:'Daniel',numberPhone:'(555) 444-4444',device:'home'},
+            {name:'Daniel',numberPhone:'(408) 222-2222',device:'mobile'},
+            {name:'David Taylor',numberPhone:'(555) 677-7777',device:''}
+      ]
+    },
+    {
+      title:'H',
+      data:[{name:'Hank Zakroff',numberPhone:'(555) 761-1111',device:'work'},
+            {name:'Hank Zakroff',numberPhone:'(707) 544-4444',device:'other'}
+      ]
+    },
+    {
+      title:'J',
+      data:[{name:'John Appleseed',numberPhone:'1 (234) 567-889',device:'Mobile'},
+            {name:'John Appleseed',numberPhone:'(987) 654-3210',device:'home'}
+      ]
+    },
+    {
+      title:'K',
+      data:[{name:'Kate Bell',numberPhone:'1 (234) 567-889',device:'mobile'}]
+    }
+  ]
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: '#F8F8F8',
-        flex: 1,
-        justifyContent: 'center',
-      }}>
-      <View style={{backgroundColor: 'white'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 10,
-          }}>
-          <Text style={{fontSize: 20, color: 'orange', fontWeight: 'bold'}}>
-            Tìm kiếm phổ biến
-          </Text>
-          <Text style={{color: 'orange'}}>Xem thêm</Text>
-        </View>
-        <View>
-          <View style={styles.displayInline}>
-            <View style={styles.product}>
-              <View>
-                <Text>Tai-nghe</Text>
-                <Text>172K sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-            <View style={styles.product}>
-              <View>
-                <Text>Sandal nữ</Text>
-                <Text>402k sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-          </View>
-          <View style={styles.displayInline}>
-            <View style={styles.product}>
-              <View>
-                <Text>Tai-nghe</Text>
-                <Text>172K sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-            <View style={styles.product}>
-              <View>
-                <Text>Sandal nữ</Text>
-                <Text>402k sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  small: {
-    flex: 1,
-  },
-  displayInline: {
-    flexDirection: 'row',
-    display: 'flex',
-    height: 100,
-  },
-  product: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: 'grey',
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+    <ScrollView>
+      <Header/>
+      <SectionList
+        sections={Contacts}
+        keyExtractor={(item,index) =>index}
+        renderItem={({item}) => <Content contact={item} />}
+        renderSectionHeader={({section:{title}}) => <Title title={title}/>}
+      />
+    </ScrollView>
+  )
+}
 
 export default App;
