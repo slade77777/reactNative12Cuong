@@ -10,24 +10,42 @@ import React from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
   View,
-  Dimensions,
-  Image,
-} from 'react-native';
+  FlatList,
+  Image, Dimensions,
+} from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Section1 from './src/components/Section';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+const data = [
+  {
+    name: 'tai nghe',
+    content: '172k san pham',
+    imageUrl:
+      'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+  },
+  {
+    name: 'quan ao',
+    content: '50k san pham',
+    imageUrl:
+      'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+  },
+  {
+    name: 'may tinh',
+    content: '20k san pham',
+    imageUrl:
+      'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+  },
+  {
+    name: 'giay dep',
+    content: '500k san pham',
+    imageUrl:
+      'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
+  },
+];
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -54,97 +72,61 @@ const App: () => Node = () => {
           </Text>
           <Text style={{color: 'orange'}}>Xem thêm</Text>
         </View>
-        <View>
-          <View style={styles.displayInline}>
-            <View style={styles.product}>
-              <View>
-                <Text>Tai-nghe</Text>
-                <Text>172K sản phẩm</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+          }}>
+          {data.map((item, index) => {
+            return (
+              <View key={index} style={styles.product}>
+                <View>
+                  <Text>{item.name}</Text>
+                  <Text>{item.content}</Text>
+                </View>
+                <Image
+                  source={{
+                    uri: item.imageUrl,
+                  }}
+                  style={{width: 50, height: 50}}
+                />
               </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-            <View style={styles.product}>
-              <View>
-                <Text>Sandal nữ</Text>
-                <Text>402k sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-          </View>
-          <View style={styles.displayInline}>
-            <View style={styles.product}>
-              <View>
-                <Text>Tai-nghe</Text>
-                <Text>172K sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-            <View style={styles.product}>
-              <View>
-                <Text>Sandal nữ</Text>
-                <Text>402k sản phẩm</Text>
-              </View>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-                }}
-                style={{width: 50, height: 50}}
-              />
-            </View>
-          </View>
+            );
+          })}
         </View>
+        <FlatList
+          data={data}
+          numColumns={2}
+          keyExtractor={item => item.name}
+          renderItem={({item}, index) => (
+            <View key={index} style={styles.product}>
+              <View>
+                <Text>{item.name}</Text>
+                <Text>{item.content}</Text>
+              </View>
+              <Image
+                source={{
+                  uri: item.imageUrl,
+                }}
+                style={{width: 50, height: 50}}
+              />
+            </View>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  small: {
-    flex: 1,
-  },
-  displayInline: {
-    flexDirection: 'row',
-    display: 'flex',
-    height: 100,
-  },
   product: {
-    flex: 1,
     borderWidth: 1,
     borderColor: 'grey',
     padding: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    justifyContent: 'space-between',
+    backgroundColor: 'yellow',
+    width: Dimensions.get('window').width * 0.5,
   },
 });
 
