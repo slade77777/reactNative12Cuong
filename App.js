@@ -1,137 +1,83 @@
-import React from "react";
-import { StyleSheet, Text, View, SafeAreaView, SectionList, StatusBar } from "react-native";
-
-
-// const data = [
-//   {
-//     name: 'tai nghe',
-//     content: '172k san pham',
-//     imageUrl:
-//       'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-//   },
-//   {
-//     name: 'quan ao',
-//     content: '50k san pham',
-//     imageUrl:
-//       'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-//   },
-//   {
-//     name: 'may tinh',
-//     content: '20k san pham',
-//     imageUrl:
-//       'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-//   },
-//   {
-//     name: 'giay dep',
-//     content: '500k san pham',
-//     imageUrl:
-//       'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg',
-//   },
-// ];
-
-
-
-
-
-
-
-
-// const DATA = [
-//   {
-//     title:"A",
-//     data: [
-//       {name:"Anh rina Haro", phoneNumber:"+84 2125 1256"}
-//     ]
-//   },
-//   {
-//     title:"B",
-//     data: [
-//       {name:"Ban shina", phoneNumber:"(+84)97 5892 666"},
-//       {name:"Binh Nguyen", phoneNumber:"(+84)98 966 8759"},
-//       {name:"Ban Do", phoneNumber:"(+84) 95458 653214"},
-//     ]
-//   },
-//   {
-//     title:"C",
-//     data: [
-//       {name:"Cong Pham", phoneNumber:"(+84) 987 568 6895"},
-//       {name:"Chinh Ngo", phoneNumber:"(+84) 975 8889 523"},
-//       {name:"Cam Nguyen", phoneNumber:"(+84) 895 6332 513"},
-//     ]
-//   },
-// ];
-
-// const Item = ({title}) => (
-//   <View>
-//     <Text>{title}</Text>
-//   </View>
-// )
-
-// const App = () => (
-//   <SafeAreaView>
-//     <SectionList
-//       sections={DATA}
-//       keyExtractor={(item, index) => item + index}
-//       renderItem={({ item }) => <Item title={item} />}
-//       renderSectionHeader={({ section: { title } }) => (
-//         <Text>{title}</Text>
-//       )}
-//     />
-//   </SafeAreaView>
-// );
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+  SectionList,
+} from 'react-native';
 
 
 const DATA = [
   {
-    title: "A",
+    title:"A",
     data: [
-      {name:"Anh rina Haro", phoneNumber:"+84 2125 1256"}
+      {name:"Anh rina Haro", phoneNumber:"(+84) 2125 1256"}
     ]
   },
   {
-    title: "B",
+    title:"B",
     data: [
-      {name:"Anh rina Haro", phoneNumber:"+84 2125 1256"}
+      {name:"Ban shina", phoneNumber:"(+84)97 5892 666"},
+      {name:"Binh Nguyen", phoneNumber:"(+84)98 966 8759"},
+      {name:"Ban Do", phoneNumber:"(+84) 95458 653214"},
     ]
   },
   {
-    title: "C",
+    title:"C",
     data: [
-      {name:"Anh rina Haro", phoneNumber:"+84 2125 1256"}
+      {name:"Cong Pham", phoneNumber:"(+84) 987 568 6895"},
+      {name:"Chinh Ngo", phoneNumber:"(+84) 975 8889 523"},
+      {name:"Cam Nguyen", phoneNumber:"(+84) 895 6332 513"},
     ]
   },
   {
-    title: "D",
+    title:"D",
     data: [
-      {name:"Anh rina Haro", phoneNumber:"+84 2125 1256"}
-    ]
-  }
-];
+      {name:"Dong Pham", phoneNumber:"(+84) 987 568 6895"},
+      {name:"Dinh Ngo", phoneNumber:"(+84) 975 8889 523"},
 
-const Item = ({ item }) => {
-  console.log(item)
+    ]
+  },
+]; 
+
+
+const App = () => {
   return (
-  <View>
-    <Text>{item.name}</Text>
-  </View>
-)};
-
-const App = () => (
-  <SafeAreaView>
     <SectionList
       sections={DATA}
       keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => <Item item={item} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text>{title}</Text>
+      renderItem={({ item }) => (
+          <Text style={styles.text}>{item.name +" : " + item.phoneNumber}</Text>
+      )}
+      renderSectionHeader={({section})=>(
+        <View style={styles.item}>
+          <Text style={styles.text}>{section.title}</Text>
+        </View>
       )}
     />
-  </SafeAreaView>
-);
-
+  );
+};
 
 const styles = StyleSheet.create({
-
+  
+  item: {
+    margin: 10,
+    backgroundColor: '#F1F1F1',
+    justifyContent: 'center',
+    borderRadius: 10
+  },
+  text: {
+    color: '#000000',
+    fontSize: 25,
+    fontStyle: 'italic',
+    margin: 10,
+    borderBottomColor: '#E1E1E1',
+    borderBottomWidth: 1,
+    
+  },
 });
 
 export default App;
