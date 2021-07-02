@@ -30,7 +30,7 @@ const Item = ({ title }) => (
 const App = () => (
   <SafeAreaView style={styles.container}>
     <TextInput
-      style={styles.border}
+      style={styles.search}
       placeholder="Tim kiem"
     />
     <SectionList
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white',
   },
-  border: {
+  search: {
     backgroundColor: 'white',
     marginHorizontal: 10,
     marginVertical: 8,
